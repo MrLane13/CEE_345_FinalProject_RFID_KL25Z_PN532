@@ -1,0 +1,4 @@
+data/main.cpp.i
+data/PN532/Adafruit_PN532.h.i
+data/PN532/Adafruit_PN532.cpp.i
+data/mbed.bld.i

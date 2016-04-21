@@ -1,0 +1,15 @@
+--cpu Cortex-M0+
+".\build\adafruit_pn532.o"
+"mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/board.o"
+"mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/cmsis_nvic.o"
+".\build\main.o"
+"mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/mbed.ar"
+"mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/mbed_overrides.o"
+"mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/retarget.o"
+"mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/startup_MKL25Z4.o"
+"mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/sys.o"
+"mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/system_MKL25Z4.o"
+--strict --scatter "mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/MKL25Z4.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\build\readMifare.map" -o .\build\readMifare.axf
