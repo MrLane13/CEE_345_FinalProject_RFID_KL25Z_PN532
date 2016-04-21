@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\build\readMifare.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\build\readMifare.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Thu Apr 21 13:52:36 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Thu Apr 21 16:09:31 2016
 <BR><P>
-<H3>Maximum Stack Usage =        472 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        416 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; $Super$$main &rArr; loop() &rArr; Adafruit_PN532::mifareclassic_AuthenticateBlock(unsigned char*, unsigned char, unsigned, unsigned char, unsigned char*) &rArr; Adafruit_PN532::sendCommandCheckAck(unsigned char*, unsigned char, unsigned short) &rArr; Adafruit_PN532::spi_readack() &rArr; Adafruit_PN532::readspidata(unsigned char*, unsigned char) &rArr; Adafruit_PN532::spiwrite(unsigned char) &rArr; mbed::DigitalOut::operator =(int) &rArr; mbed::DigitalOut::write(int) &rArr; mbed_assert_internal &rArr; error &rArr; exit &rArr; fflush &rArr; _do_fflush &rArr; _fflush &rArr; _writebuf &rArr; _sys_write &rArr; serial_init &rArr;  pin_mode (Cycle)
 <P>
@@ -473,7 +473,7 @@ Global Symbols
 <P><STRONG><a name="[16e]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[95]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 472 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; $Super$$main &rArr; loop() &rArr; Adafruit_PN532::mifareclassic_AuthenticateBlock(unsigned char*, unsigned char, unsigned, unsigned char, unsigned char*) &rArr; Adafruit_PN532::sendCommandCheckAck(unsigned char*, unsigned char, unsigned short) &rArr; Adafruit_PN532::spi_readack() &rArr; Adafruit_PN532::readspidata(unsigned char*, unsigned char) &rArr; Adafruit_PN532::spiwrite(unsigned char) &rArr; mbed::DigitalOut::operator =(int) &rArr; mbed::DigitalOut::write(int) &rArr; mbed_assert_internal &rArr; error &rArr; exit &rArr; fflush &rArr; _do_fflush &rArr; _fflush &rArr; _writebuf &rArr; _sys_write &rArr; serial_init &rArr;  pin_mode (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -484,7 +484,6 @@ Global Symbols
 
 <P><STRONG><a name="[ab]"></a>__aeabi_memcpy4</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, rt_memcpy.o(.emb_text))
 <BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop()
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetVector
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::mifareclassic_AuthenticateBlock(unsigned char*, unsigned char, unsigned, unsigned char, unsigned char*)
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::Adafruit_PN532(mbed::DigitalOut, mbed::DigitalIn, mbed::DigitalOut, mbed::DigitalOut)
@@ -921,14 +920,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop()
 </UL>
 
-<P><STRONG><a name="[c3]"></a>Adafruit_PN532::PrintHexChar(const unsigned char*, unsigned)</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, adafruit_pn532.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208 + Unknown Stack Size
-<LI>Call Chain = Adafruit_PN532::PrintHexChar(const unsigned char*, unsigned) &rArr; mbed::Stream::printf(const char*, ...) &rArr; fflush &rArr; _do_fflush &rArr; _fflush &rArr; _writebuf &rArr; _sys_write &rArr; serial_init &rArr;  pin_mode (Cycle)
+<P><STRONG><a name="[c3]"></a>Adafruit_PN532::PrintHexChar(const unsigned char*, unsigned)</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, adafruit_pn532.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mbed::Stream::printf(const char*, ...)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mbed::Stream::printf(const char*, ...)
-</UL>
-<BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop()
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::mifareclassic_ReadDataBlock(unsigned char, unsigned char*)
+<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::mifareclassic_ReadDataBlock(unsigned char, unsigned char*)
 </UL>
 
 <P><STRONG><a name="[c5]"></a>Adafruit_PN532::mifareclassic_ReadDataBlock(unsigned char, unsigned char*)</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, adafruit_pn532.o(.text), UNUSED)
@@ -959,37 +954,22 @@ Global Symbols
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::mifareclassic_WriteDataBlock(unsigned char, unsigned char*)
 </UL>
 
-<P><STRONG><a name="[ca]"></a>Adafruit_PN532::mifareultralight_ReadPage(unsigned char, unsigned char*)</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, adafruit_pn532.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 336 + Unknown Stack Size
-<LI>Call Chain = Adafruit_PN532::mifareultralight_ReadPage(unsigned char, unsigned char*) &rArr; Adafruit_PN532::sendCommandCheckAck(unsigned char*, unsigned char, unsigned short) &rArr; Adafruit_PN532::spi_readack() &rArr; Adafruit_PN532::readspidata(unsigned char*, unsigned char) &rArr; Adafruit_PN532::spiwrite(unsigned char) &rArr; mbed::DigitalOut::operator =(int) &rArr; mbed::DigitalOut::write(int) &rArr; mbed_assert_internal &rArr; error &rArr; exit &rArr; fflush &rArr; _do_fflush &rArr; _fflush &rArr; _writebuf &rArr; _sys_write &rArr; serial_init &rArr;  pin_mode (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<P><STRONG><a name="[ca]"></a>Adafruit_PN532::mifareultralight_ReadPage(unsigned char, unsigned char*)</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, adafruit_pn532.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::sendCommandCheckAck(unsigned char*, unsigned char, unsigned short)
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::readspidata(unsigned char*, unsigned char)
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop()
+
+<P><STRONG><a name="[cb]"></a>Adafruit_PN532::PrintHex(const unsigned char*, unsigned)</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, adafruit_pn532.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mbed::Stream::printf(const char*, ...)
 </UL>
 
-<P><STRONG><a name="[cb]"></a>Adafruit_PN532::PrintHex(const unsigned char*, unsigned)</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, adafruit_pn532.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208 + Unknown Stack Size
-<LI>Call Chain = Adafruit_PN532::PrintHex(const unsigned char*, unsigned) &rArr; mbed::Stream::printf(const char*, ...) &rArr; fflush &rArr; _do_fflush &rArr; _fflush &rArr; _writebuf &rArr; _sys_write &rArr; serial_init &rArr;  pin_mode (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mbed::Stream::printf(const char*, ...)
-</UL>
-<BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop()
-</UL>
-
-<P><STRONG><a name="[ce]"></a>loop()</STRONG> (Thumb, 360 bytes, Stack size 96 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 456 + Unknown Stack Size
+<P><STRONG><a name="[ce]"></a>loop()</STRONG> (Thumb, 1132 bytes, Stack size 40 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 400 + Unknown Stack Size
 <LI>Call Chain = loop() &rArr; Adafruit_PN532::mifareclassic_AuthenticateBlock(unsigned char*, unsigned char, unsigned, unsigned char, unsigned char*) &rArr; Adafruit_PN532::sendCommandCheckAck(unsigned char*, unsigned char, unsigned short) &rArr; Adafruit_PN532::spi_readack() &rArr; Adafruit_PN532::readspidata(unsigned char*, unsigned char) &rArr; Adafruit_PN532::spiwrite(unsigned char) &rArr; mbed::DigitalOut::operator =(int) &rArr; mbed::DigitalOut::write(int) &rArr; mbed_assert_internal &rArr; error &rArr; exit &rArr; fflush &rArr; _do_fflush &rArr; _fflush &rArr; _writebuf &rArr; _sys_write &rArr; serial_init &rArr;  pin_mode (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mbed::DigitalOut::operator =(int)
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mbed::DigitalOut::operator =(int)
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mbed::Stream::printf(const char*, ...)
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::PrintHex(const unsigned char*, unsigned)
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::mifareultralight_ReadPage(unsigned char, unsigned char*)
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::PrintHexChar(const unsigned char*, unsigned)
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::mifareclassic_AuthenticateBlock(unsigned char*, unsigned char, unsigned, unsigned char, unsigned char*)
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::readPassiveTargetID(unsigned char, unsigned char*, unsigned char*)
 </UL>
@@ -997,7 +977,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[cf]"></a>$Super$$main</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 464 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
 <LI>Call Chain = $Super$$main &rArr; loop() &rArr; Adafruit_PN532::mifareclassic_AuthenticateBlock(unsigned char*, unsigned char, unsigned, unsigned char, unsigned char*) &rArr; Adafruit_PN532::sendCommandCheckAck(unsigned char*, unsigned char, unsigned short) &rArr; Adafruit_PN532::spi_readack() &rArr; Adafruit_PN532::readspidata(unsigned char*, unsigned char) &rArr; Adafruit_PN532::spiwrite(unsigned char) &rArr; mbed::DigitalOut::operator =(int) &rArr; mbed::DigitalOut::write(int) &rArr; mbed_assert_internal &rArr; error &rArr; exit &rArr; fflush &rArr; _do_fflush &rArr; _fflush &rArr; _writebuf &rArr; _sys_write &rArr; serial_init &rArr;  pin_mode (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop()
@@ -1870,7 +1850,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[96]"></a>main</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, retarget.o(i.$Sub$$main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 472 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
 <LI>Call Chain = main &rArr; $Super$$main &rArr; loop() &rArr; Adafruit_PN532::mifareclassic_AuthenticateBlock(unsigned char*, unsigned char, unsigned, unsigned char, unsigned char*) &rArr; Adafruit_PN532::sendCommandCheckAck(unsigned char*, unsigned char, unsigned short) &rArr; Adafruit_PN532::spi_readack() &rArr; Adafruit_PN532::readspidata(unsigned char*, unsigned char) &rArr; Adafruit_PN532::spiwrite(unsigned char) &rArr; mbed::DigitalOut::operator =(int) &rArr; mbed::DigitalOut::write(int) &rArr; mbed_assert_internal &rArr; error &rArr; exit &rArr; fflush &rArr; _do_fflush &rArr; _fflush &rArr; _writebuf &rArr; _sys_write &rArr; serial_init &rArr;  pin_mode (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mbed_sdk_init
@@ -2038,7 +2018,6 @@ Global Symbols
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__c89vfprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;$Super$$main
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;loop()
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::PrintHex(const unsigned char*, unsigned)
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::mifareclassic_ReadDataBlock(unsigned char, unsigned char*)
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adafruit_PN532::PrintHexChar(const unsigned char*, unsigned)

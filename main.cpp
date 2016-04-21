@@ -134,10 +134,59 @@ void loop(void) {
 			
 			// Check to see if it's the admin card
 			if(uid[0]==adminCard[0] & uid[1]==adminCard[1] & uid[2]==adminCard[2] & uid[3]==adminCard[3]) {
-				blue =0;
+				blue = 0;
+				int count = 0;
+				uint8_t nextCard;
+				wait(1);
+			
+				// If we havent found a next card, or our counter is under 5, keep looking for a next card
+				while(!nextCard | (count<5)) {
+					green = 1; red = 1, blue = 1;
+					nextCard = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLength);
+				
+					// If we do get another card put it in the first available cardUIDs buffer
+					if(nextCard) {
+						for(int j=0; j<uidLength; j++) {
+							cardUIDs[savedCards][j] = uid[j];
+						}
+						savedCards++;
+						green = 0;
+					}
+					
+					// Count up and delay one second
+					count++;
+					wait(1);
+				}
+			} // End check admin card
+			
+			// Check to see if it's in our first slot of cardUIDs
+			else if(uid[0]==cardUIDs[0][0] & uid[1]==cardUIDs[0][1] & uid[2]==cardUIDs[0][2] & uid[3]==cardUIDs[0][3]) {
+				green = 0;
+			wait(1);
+			}
+			// Check to see if it's in our second slot of cardUIDs
+			else if(uid[0]==cardUIDs[1][0] & uid[1]==cardUIDs[1][1] & uid[2]==cardUIDs[1][2] & uid[3]==cardUIDs[1][3]) {
+				green = 0;
+			wait(1);
+			}
+			// Check to see if it's in our third slot of cardUIDs
+			else if(uid[0]==cardUIDs[2][0] & uid[1]==cardUIDs[2][1] & uid[2]==cardUIDs[2][2] & uid[3]==cardUIDs[2][3]) {
+				green = 0;
+			wait(1);
+			}
+			// Check to see if it's in our fourth slot of cardUIDs
+			else if(uid[0]==cardUIDs[3][0] & uid[1]==cardUIDs[3][1] & uid[2]==cardUIDs[3][2] & uid[3]==cardUIDs[3][3]) {
+				green = 0;
+			wait(1);
+			}
+			// Check to see if it's in our fith slot of cardUIDs
+			else if(uid[0]==cardUIDs[4][0] & uid[1]==cardUIDs[4][1] & uid[2]==cardUIDs[4][2] & uid[3]==cardUIDs[4][3]) {
+				green = 0;
+			wait(1);
 			}
 			else {
 				red = 0;
+				wait(1);
 			}
 			
 		}
@@ -145,14 +194,26 @@ void loop(void) {
 		// If we have a MIFARE LIGHT card
 		else if (uidLength == 7) {
 			
-			// Check to see if it's the admin card
-			if(uid[0]==adminCard[0] & uid[1]==adminCard[1] & uid[2]==adminCard[2] & uid[3]==adminCard[3]) {
-				blue =0;
-			}
-			else {
-				red = 0;
+			// Custom code to attempt each of the potential default mifare classic 1k keya values
+			for(int i=0; i<sizeof(keyaa)&&i<10; i++) {
+				if(!cardIsAuth) {
+					cardIsAuth = nfc.mifareclassic_AuthenticateBlock(uid, uidLength, 4, 0, keyaa[i]);
+				}
 			}
 			
+			if(cardIsAuth) {
+				// Check to see if it's the admin card
+				if(uid[0]==adminCard[0] & uid[1]==adminCard[1] & uid[2]==adminCard[2] & uid[3]==adminCard[3]) {
+					blue =0;
+				}
+				// Check to see if it's in our first slot of cardUIDs
+				else if(uid[0]==cardUIDs[0][0] & uid[1]==cardUIDs[0][1] & uid[2]==cardUIDs[0][2] & uid[3]==cardUIDs[0][3]) {
+					green = 0;
+				}
+				else {
+					red = 0;
+				}
+			}
 		}
 		
 	} else {
