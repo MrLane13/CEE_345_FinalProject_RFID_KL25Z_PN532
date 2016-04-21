@@ -113,18 +113,8 @@ void loop(void) {
       // Now we need to try to authenticate it for read/write access
       // Try with the factory default KeyA: 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF
       pc.printf("Trying to authenticate block 4 with default KEYA value\n");
-//      uint8_t keya[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-//			uint8_t keyb[6] = { 0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5 };
-//			uint8_t keyc[6] = {    0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF		};
-//      uint8_t keyd[6] = {    0XD3, 0XF7, 0XD3, 0XF7, 0XD3, 0XF7		};	// THIS ONE WORKS
-//      uint8_t keye[6] = {    0XA0, 0XA1, 0XA2, 0XA3, 0XA4, 0XA5		};
-//      uint8_t keyf[6] = {    0XB0, 0XB1, 0XB2, 0XB3, 0XB4, 0XB5		};
-//      uint8_t keyg[6] = {    0X4D, 0X3A, 0X99, 0XC3, 0X51, 0XDD		};
-//      uint8_t keyh[6] = {    0X1A, 0X98, 0X2C, 0X7E, 0X45, 0X9A		};
-//      uint8_t keyi[6] = {    0XAA, 0XBB, 0XCC, 0XDD, 0XEE, 0XFF		};
-//      uint8_t keyj[6] = {    0X00, 0X00, 0X00, 0X00, 0X00, 0X00		};
-//      uint8_t keyk[6] = {    0XAB, 0XCD, 0XEF, 0X12, 0X34, 0X56		};
 			
+			// Potential default mifare classic 1k keya values for block authentication
 			uint8_t keyaa[9][6] = {
 																{    0XFF, 0XFF, 0XFF, 0XFF, 0XFF, 0XFF		},
 																{    0XD3, 0XF7, 0XD3, 0XF7, 0XD3, 0XF7		},
@@ -137,33 +127,31 @@ void loop(void) {
 																{    0XAB, 0XCD, 0XEF, 0X12, 0X34, 0X56		}
 			};
       
+			// Custom code to attempt each of the potential default mifare classic 1k keya values
 			for(int i=0; i<sizeof(keyaa)&&i<10; i++) {
 				if(!success) {
 					success = nfc.mifareclassic_AuthenticateBlock(uid, uidLength, 4, 0, keyaa[i]);
 				}
 			}
-      // Start with block 4 (the first block of sector 1) since sector 0
-      // contains the manufacturer data and it's probably better just
-      // to leave it alone unless you know what you're doing
-      //success = nfc.mifareclassic_AuthenticateBlock(uid, uidLength, 4, 0, keyd);
       
       if (success)
       {
         // Turn colors to indicate which tag
         //green = 0; red = 1;
-        uint8_t tag_1 = 0xCD;
+        uint8_t tag_1 = 0xCD;	// Hard coded admin card
         uint8_t tag_2 = 0x52;
-//        uint8_t tag_3 = 0x52;
-//        uint8_t tag_4 = 0x52;
-        if (uid[0] == tag_1)
-          green = 0;
-        else if (uid[0] == tag_2)
-          green = 0;
-//        else if (uid[0] == tag_3) {
-//          green = 0, red = 0;
-//        } else if (uid[0] == tag_4) {
-//          red = 0, blue = 0;
-//        }
+				
+				// If we have the admin card
+        if (uid[0] == tag_1) {
+          blue = 0;
+					// check for next card to appear
+				}
+				
+        else if (uid[0] == tag_2) {
+						green = 0;
+				}
+				else 
+					red = 0;
         
         pc.printf("Sector 1 (Blocks 4..7) has been authenticated\n");
         uint8_t data[16];
