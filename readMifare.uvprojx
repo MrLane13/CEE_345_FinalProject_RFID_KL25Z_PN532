@@ -950,6 +950,21 @@
               <FileType>3</FileType>
               <FilePath>mbed/TARGET_KL25Z/TOOLCHAIN_ARM_STD/system_MKL25Z4.o</FilePath>
             </File>
+            <File>
+              <FileName>cardcheck.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\cardcheck.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>delay.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\delay.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>blinkLED.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\blinkLED.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
