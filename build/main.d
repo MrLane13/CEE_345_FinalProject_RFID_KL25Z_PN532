@@ -86,3 +86,6 @@
 .\build\main.o: mbed\sleep_api.h
 .\build\main.o: mbed\rtc_time.h
 .\build\main.o: PN532\Adafruit_PN532.h
+.\build\main.o: cardcheck.h
+.\build\main.o: delay.h
+.\build\main.o: blinkLED.h
